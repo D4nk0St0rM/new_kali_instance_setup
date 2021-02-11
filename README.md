@@ -1,1 +1,2 @@
-# new_kali_instance_setup
+### :panda_face: Script for setting up a new instance of kali
+
