@@ -75,7 +75,7 @@ echo -e "${GREEN}==================== - tweaking the theme=====================$
 echo -e "${GREEN}==================== - setting language & text editor=========${NC}"
 echo -e "${GREEN}==================== - clean up and create folders============${NC}"
 echo -e "${GREEN}==================== - install python pip=====================${NC}"
-echo -e "${RED}==============================================================${NC}"
+echo -e "${RED}====================== - install python virtualenvs=============${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}=============!!WHY THE PHUQ IS PIP NOT HERE!!=================${NC}"
 echo -e "${RED}==============================================================${NC}"
@@ -125,9 +125,33 @@ mkdir -p /opt/mytools 2>/dev/null
 mytools="/opt/mytools"
 virtenv="~/.virtualenv"
 mkdir -p ~/Downloads 2>/dev/null
+
+#### Python & Virtual Environments
 curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py
 sudo python get-pip.py
 rm get-pip.py
+sudo apt-get install -y python2.7
+sudo apt-get install python3-pip -y
+sudo pip3 install virtualenv
+sudo pip3 install virtualenvwrapper
+sudo source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+echo "export WORKON_HOME=$HOME/.virtualenv" >> ~/.zshrc
+echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2" >> ~/.zshrc
+cd ~/.virtualenv
+virtualenv -p python3 python3
+virtualenv -p python2 python2
+echo -e "~#~ Alisas in .bashrc for activating python environments: py3act, py2act"
+cat << EOF >> ~/.zshrc
+alias py2act='source ~/.virtualenv/python2/bin/activate'
+alias py3act='source ~/.virtualenv/python3/bin/activate'
+EOF
+echo -e ''
+cd ~/
+
 
 echo -e "${RED}============================================================${NC}"
 echo -e "${RED}============================================================${NC}"
