@@ -79,6 +79,7 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/p
 sudo apt-get install apt-transport-https
 sudo apt-get update
 
+
 ####install visual code studio
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
@@ -87,6 +88,18 @@ echo -e "${RED}==============================================================${N
 echo -e "${RED}==============================================================${NC}"
 toilet -f term -F border --gay "Microsoft Visual Code Studio"
 sudo apt-get install code
+
+##### install forticlient vpn for virtualhacking labs
+toilet -f term -F border --gay "forticlient vpn"
+cd Documents/vhl
+wget https://www.virtualhackinglabs.com/wp-content/uploads/2017/03/forticlientsslvpn_linux_4.4_2336.tar.gz
+tar -zxf forticlientsslvpn_linux_4.4_2336.tar.gz
+rm forticlientsslvpn_linux_4.4_2336.tar.gz
+mkdir ~/.fctsslvpn_trustca
+cp /etc/ssl/certs/COMODO_RSA_Certification_Authority.pem ~/.fctsslvpn_trustca/
+cp /etc/ssl/certs/USERTrust_RSA_Certification_Authority.pem ~/.fctsslvpn_trustca/
+cd ~/
+
 
 #### Tweaking the themeing and look
 echo -e "${RED}==============================================================${NC}"
