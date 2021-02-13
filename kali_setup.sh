@@ -6,8 +6,8 @@
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
 
 #### install figlet & toilet
-sudo apt-get install figlet
-sudo apt-get install toilet
+sudo apt-get install figlet -y
+sudo apt-get install toilet -y
 
 #### set up some colour referencing to change outputs depending on your preferences
 RED='\e[1;31m'
@@ -100,10 +100,10 @@ mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
 
 wallpaper_file="$(find . -type f -name Kali_dark_shadow_eye.jpg)"
 if [[ -z "$wallpaper_file" ]]
-	then
-		sudo wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/D4nk0St0rM/simple_linux_tweaks/main/wallpaper/Kali_dark_shadow_eye.jpg
-	else
-		sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
+        then
+                sudo wget -P '/usr/share/wallpapers/wallpapers/' https://raw.githubusercontent.com/D4nk0St0rM/simple_linux_tweaks/main/wallpaper/Kali_dark_shadow_eye.jpg
+        else
+                sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
 
 
@@ -120,9 +120,9 @@ sudo yum install powerline-fonts
 ### manually change .zshrc [to do - blanket config to curl into place
 ### ZSH_THEME="agnoster"
 ### plugins=(
-###		git
-###		zsh-syntax-highlighting
-###		zsh-autosuggestions
+###             git
+###             zsh-syntax-highlighting
+###             zsh-autosuggestions
 ###)
 
 
@@ -197,35 +197,34 @@ toilet -f term -F border --gay "we are running dist-upgrade now..."
 sudo apt-get dist-upgrade -y
 toilet -f term -F border --gay "phew...."
 
-
 #### Lets install some additional progs and apps
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}================== Installing....... =========================${NC}"
-echo -e "${GREEN}=================================== - git ====================${NC}"
-echo -e "${GREEN}=================================== - dbus-x11 ===============${NC}"
-echo -e "${GREEN}=================================== - linux-headers ==========${NC}"
-echo -e "${GREEN}=================================== - hcxdumptool ============${NC}"
-echo -e "${GREEN}=================================== - hcxtools ===============${NC}"
-echo -e "${GREEN}=================================== - dnsutils ===============${NC}"
-echo -e "${GREEN}=================================== - exiftool ===============${NC}"
-echo -e "${GREEN}=================================== - openvpn ================${NC}"
-echo -e "${GREEN}=================================== - dialog =================${NC}"
-echo -e "${GREEN}=================================== - protonvpn ==============${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 
-sudo apt-get install \
-    git \
-    dbus-x11 \
-    linux-headers-$(uname -r) \
-    hcxdumptool \
-    hcxtools \
-    dnsutils \
-    exiftool \
-    openvpn \
-    dialog \
-    protonvpn-cli
+toilet -f term -F border --gay "git"
+sudo apt-get install git -y 2>/dev/null
+toilet -f term -F border --gay "dbus-x11"
+sudo apt-get install dbus-x11 -y 2>/dev/null
+toilet -f term -F border --gay "linux-headers"
+sudo apt-get install linux-headers-$(uname -r) -y 2>/dev/null
+toilet -f term -F border --gay "hcxdumptool"
+sudo apt-get install hcxdumptool -y 2>/dev/null
+toilet -f term -F border --gay "hcxtools"
+sudo apt-get install hcxtools -y 2>/dev/null
+toilet -f term -F border --gay "dnsutils"
+sudo apt-get install dnsutils -y 2>/dev/null
+toilet -f term -F border --gay "exiftool"
+sudo apt-get install  exiftool -y 2>/dev/null
+toilet -f term -F border --gay "openvpn"
+sudo apt-get install openvpn -y 2>/dev/null
+toilet -f term -F border --gay "dialog"
+sudo apt-get install dialog -y 2>/dev/null
+toilet -f term -F border --gay "protonvpn"
+sudo apt-get install protonvpn-cli -y 2>/dev/null
+
 
 
 echo -e "${RED}============================================================${NC}"
