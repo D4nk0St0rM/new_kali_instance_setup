@@ -34,8 +34,11 @@ toilet -f term -F border --gay "...lets dooo this"
 #    exit 1
 #fi
 
-#### set variable for use in local path
+#### set variables for use in paths
 curuse=$(whoami)
+mytools="/opt/mytools" 
+virtenv="~/.virtualenv"
+
 
 
 #### Check KDE Version for config changes
@@ -155,8 +158,6 @@ mkdir -p ~/Documents/htb 2>/dev/null
 mkdir -p ~/Documents/general 2>/dev/null
 mkdir -p ~/.virtualenv 2>/dev/null
 mkdir -p /opt/mytools 2>/dev/null
-mytools="/opt/mytools"
-virtenv="~/.virtualenv"
 mkdir -p ~/Downloads 2>/dev/null
 sudo rm packages.microsoft.gpg &>/dev/null
 
@@ -243,55 +244,72 @@ echo -e "${RED}                                                            ${NC}
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
 
+#### Lets install some additional progs and apps
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}================== Installing....... =========================${NC}"
-echo -e "${GREEN}=========================== - realtek drivers ================${NC}"
-echo -e "${GREEN}=========================== - golang =========================${NC}"
-echo -e "${GREEN}=========================== - docker.io ======================${NC}"
-echo -e "${GREEN}=========================== - powershell =====================${NC}"
-echo -e "${GREEN}=========================== - terminator =====================${NC}"
-echo -e "${GREEN}=========================== - python3dev  ====================${NC}"
-echo -e "${GREEN}=========================== - python3pip =====================${NC}"
-echo -e "${GREEN}=========================== - patator ========================${NC}"
-echo -e "${GREEN}=========================== - net-tools ======================${NC}"
-echo -e "${GREEN}=========================== - zmap ===========================${NC}"
-echo -e "${GREEN}=========================== - htop ===========================${NC}"
-echo -e "${GREEN}=========================== - mosh ===========================${NC}"
-echo -e "${GREEN}=========================== - tmux ===========================${NC}"
-echo -e "${GREEN}=========================== - nfs kernal server ==============${NC}"
-echo -e "${GREEN}=========================== - dnsmasq ========================${NC}"
-echo -e "${GREEN}=========================== - hcxtools =======================${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 
-sudo apt-get install -y \
-    realtek-rtl88xxau-dkms \
-    golang \
-    docker.io \
-    powershell \
-    terminator \
-    python3-dev \
-    python3-pip \
-    patator \
-    net-tools \
-    zmap \
-    htop \
-    mosh \
-    tmux \
-    nfs-kernel-server \
-    dnsmasq \
-    hcxtools 
+toilet -f term -F border --gay "realtek-rtl88xxau-dkm"
+sudo apt-get install -y realtek-rtl88xxau-dkms 2>/dev/null
 
+toilet -f term -F border --gay "golang"
+sudo apt-get install -y golang 2>/dev/null
+
+toilet -f term -F border --gay "docker.io"
+sudo apt-get install -y docker.io 2>/dev/null
+
+toilet -f term -F border --gay "powershell"
+sudo apt-get install -y powershell 2>/dev/null
+
+toilet -f term -F border --gay " terminator"
+sudo apt-get install -y  terminator 2>/dev/null
+
+toilet -f term -F border --gay "python3-dev"
+sudo apt-get install -y  python3-dev 2>/dev/null
+
+toilet -f term -F border --gay "patator"
+sudo apt-get install -y patator 2>/dev/null
+
+toilet -f term -F border --gay "net-tools"
+sudo apt-get install -y net-tools 2>/dev/null
+
+toilet -f term -F border --gay "zmap"
+sudo apt-get install -y zmap 2>/dev/null
+
+toilet -f term -F border --gay "htop"
+sudo apt-get install -y htop 2>/dev/null
+
+toilet -f term -F border --gay "mosh"
+sudo apt-get install -y mosh 2>/dev/null
+
+toilet -f term -F border --gay "tmux"
+sudo apt-get install -y tmux 2>/dev/null
+
+toilet -f term -F border --gay "nfs-kernel-server"
+sudo apt-get install -y nfs-kernel-server 2>/dev/null
+
+toilet -f term -F border --gay "dnsmasq"
+sudo apt-get install -y dnsmasq 2>/dev/null
+ 
+toilet -f term -F border --gay "python tools"
 sudo pip install --upgrade setuptools
 python2 -m pip install pipenv
 python3 -m pip install pipenv
 
+toilet -f term -F border --gay "tmux config echo to file"
 # default tmux config
 cat <<EOF > ~/.tmux.conf
 set -g mouse on
 set -g history-limit 20000
 EOF
+
+echo -e "${RED}==============================================================${NC}"
+echo -e "${RED}==============================================================${NC}"
+echo -e "${GREEN}=================== setting up go ============================${NC}"
+echo -e "${RED}==============================================================${NC}"
+echo -e "${RED}==============================================================${NC}"
 
 mkdir -p ~/.go
 gopath_exp='export GOPATH="$HOME/.go"'
@@ -301,6 +319,8 @@ sed -i '/export PATH=.*GOPATH.*/c\' ~/.profile
 echo $gopath_exp | tee -a "$HOME/.profile"
 grep -q -F "$path_exp" "$HOME/.profile" || echo $path_exp | tee -a "$HOME/.profile"
 . "$HOME/.profile"
+
+figlet -c git clones
 
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
