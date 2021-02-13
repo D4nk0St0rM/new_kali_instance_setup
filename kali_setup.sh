@@ -112,11 +112,14 @@ git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
+sudo fc-cache -vf
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 cp ~/.zshrc ~/.zshrc_
 mv -b ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 cat ~/.zshrc_ >> ~/.zshrc
-sudo apt-get install yum
-sudo yum install powerline-fonts
+
 ### manually change .zshrc [to do - blanket config to curl into place
 ### ZSH_THEME="agnoster"
 ### plugins=(
