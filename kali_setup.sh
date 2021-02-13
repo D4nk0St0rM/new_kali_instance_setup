@@ -87,7 +87,7 @@ echo -e "${GREEN}==================== - tweaking the theme=====================$
 echo -e "${GREEN}==================== - setting language & text editor=========${NC}"
 echo -e "${GREEN}==================== - clean up and create folders============${NC}"
 echo -e "${GREEN}==================== - install python pip=====================${NC}"
-echo -e "${RED}====================== - install python virtualenvs ==========${NC}"
+echo -e "${GREEN}====================== - install python virtualenvs ==========${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}============= !!Why is pip not already installed!! ===========${NC}"
 echo -e "${RED}==============================================================${NC}"
@@ -103,6 +103,26 @@ if [[ -z "$wallpaper_file" ]]
 	else
 		sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
+
+
+#### commandline with oh-my-zsh
+git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+cp ~/.zshrc ~/.zshrc_
+mv -b ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+cat ~/.zshrc_ >> ~/.zshrc
+sudo apt-get install yum
+sudo yum install powerline-fonts
+### manually change .zshrc [to do - blanket config to curl into place
+### ZSH_THEME="agnoster"
+### plugins=(
+###		git
+###		zsh-syntax-highlighting
+###		zsh-autosuggestions
+###)
+
 
 #### .config/kdeglobals
 ${KWRITECONF} --file kdeglobals --group "KDE-Global GUI Settings" --key "GraphicEffectsLevel" 0
