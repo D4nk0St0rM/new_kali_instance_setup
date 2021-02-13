@@ -87,7 +87,7 @@ echo -e "${GREEN}==================== - tweaking the theme=====================$
 echo -e "${GREEN}==================== - setting language & text editor=========${NC}"
 echo -e "${GREEN}==================== - clean up and create folders============${NC}"
 echo -e "${GREEN}==================== - install python pip=====================${NC}"
-echo -e "${RED}====================== - install python virtualenvs=============${NC}"
+echo -e "${RED}====================== - install python virtualenvs ==========${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}============= !!Why is pip not already installed!! ===========${NC}"
 echo -e "${RED}==============================================================${NC}"
@@ -133,6 +133,7 @@ mkdir -p /opt/mytools 2>/dev/null
 mytools="/opt/mytools"
 virtenv="~/.virtualenv"
 mkdir -p ~/Downloads 2>/dev/null
+sudo rm packages.microsoft.gpg &>/dev/null
 
 #### Python & Virtual Environments
 curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py
@@ -142,23 +143,23 @@ sudo apt-get install -y python2.7
 sudo apt-get install python3-pip -y
 sudo pip3 install virtualenv
 sudo pip3 install virtualenvwrapper
-sudo source /usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper.sh
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
 echo "export WORKON_HOME=$HOME/.virtualenv" >> ~/.zshrc
-echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2" >> ~/.zshrc
+echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.zshrc
+source /usr/local/bin/virtualenvwrapper.sh
+source ~/.zshrc
 cd ~/.virtualenv
 virtualenv -p python3 python3
 virtualenv -p python2 python2
-echo -e "~#~ Alisas in .bashrc for activating python environments: py3act, py2act"
+echo -e "~#~ Alisas for activating python environments: py3act, py2act"
 cat << EOF >> ~/.zshrc
 alias py2act='source ~/.virtualenv/python2/bin/activate'
 alias py3act='source ~/.virtualenv/python3/bin/activate'
 EOF
 echo -e ''
 cd ~/
+source ~/.zshrc
 
 
 echo -e "${RED}============================================================${NC}"
@@ -166,8 +167,14 @@ echo -e "${RED}============================================================${NC}
 echo -e "${GREEN}==================Update the system=========================${NC}"
 echo -e "${RED}============================================================${NC}"
 echo -e "${RED}============================================================${NC}"
+toilet -f term -F border --gay "apt-get update"
 sudo apt-get update -y
+toilet -f term -F border --gay "Go grab a coffee"
+toilet -f term -F border --gay "this may take a moment..."
+toilet -f term -F border --gay "we are running dist-upgrade now..."
 sudo apt-get dist-upgrade -y
+toilet -f term -F border --gay "phew...."
+
 
 #### Lets install some additional progs and apps
 echo -e "${RED}==============================================================${NC}"
