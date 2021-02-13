@@ -9,6 +9,7 @@
 sudo apt-get install figlet
 sudo apt-get install toilet
 
+#### set up some colour referencing to change outputs depending on your preferences
 RED='\e[1;31m'
 NC='\e[0m' # No Color
 reset_colour='\e[0m'
