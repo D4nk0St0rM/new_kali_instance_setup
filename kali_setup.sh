@@ -237,6 +237,7 @@ toilet -f term -F border --gay "dialog"
 sudo apt-get install dialog -y 2>/dev/null
 toilet -f term -F border --gay "protonvpn"
 sudo apt-get install protonvpn-cli -y 2>/dev/null
+sudo apt-get update && sudo apt-get install protonvpn 2>/dev/null
 
 echo -e "${RED}============================================================${NC}"
 echo -e "${RED}============================================================${NC}"
