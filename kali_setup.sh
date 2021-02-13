@@ -21,11 +21,13 @@ PURPLE='\e[1;35m'
 CYAN='\e[1;36m'
 
 #### welcome messages
-figlet -c d4nk0St0rM
-figlet -c spread l0v3 share kn0wl3dge
-toilet -f term -F border --gay "OK Mr Magoo...."
-toilet -f term -F border --gay "...lets dooo this"
-
+printf "${GREEN}"
+figlet -c D4nk0St0rM
+printf "${NC}"
+toilet -f future -F border spread l0v3 share kn0wl3ge --filter metal 
+printf "${CYAN}"
+figlet -c "lets do this"
+printf "${NC}"
 
 #### Run As Root - release if you want to run as root only install
 #if [ "$HOME" != "/root" ]
@@ -36,9 +38,8 @@ toilet -f term -F border --gay "...lets dooo this"
 
 #### set variables for use in paths
 curuse=$(whoami)
-mytools="/opt/mytools" 
+mytools="/opt/mytools"
 virtenv="~/.virtualenv"
-
 
 
 #### Check KDE Version for config changes
@@ -59,16 +60,19 @@ export DEBIAN_FRONTEND=noninteractive
 alias apt-get='yes "" | apt-get -o Dpkg::Options::="--force-confdef" -y'
 
 #### copy sources.list from git and replace
+toilet -f term -F border --gay "sources.list from git"
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/sources.list
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bakup
 sudo cp sources.list /etc/apt/sources.list
 rm sources.list
 
 # Add public key for Visual code studio
+toilet -f term -F border --gay "visual code studio key add"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB3E94ADBE1229CF 
 
 
 #### add sources for visual studio
+toilet -f term -F border --gay "add sources for visual code studio"
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' &>/dev/null
@@ -111,7 +115,9 @@ fi
 
 
 #### commandline with oh-my-zsh
+toilet -f term -F border --gay "... oh my zsh ..."
 git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
+sudo chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -122,7 +128,6 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 cp ~/.zshrc ~/.zshrc_
 mv -b ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 cat ~/.zshrc_ >> ~/.zshrc
-
 ### manually change .zshrc [to do - blanket config to curl into place
 ### ZSH_THEME="agnoster"
 ### plugins=(
@@ -152,16 +157,20 @@ echo "export EDITOR=/usr/bin/nano" >> ~/.zshrc
 echo "export VISUAL=/usr/bin/nano" >> ~/.zshrc
 
 #### A litte folder management
+toilet -f term -F border --gay "... folder management ..."
 rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
 mkdir -p ~/Documents/vhl 2>/dev/null
 mkdir -p ~/Documents/htb 2>/dev/null
 mkdir -p ~/Documents/general 2>/dev/null
 mkdir -p ~/.virtualenv 2>/dev/null
 mkdir -p /opt/mytools 2>/dev/null
+mytools="/opt/mytools"
+virtenv="~/.virtualenv"
 mkdir -p ~/Downloads 2>/dev/null
 sudo rm packages.microsoft.gpg &>/dev/null
 
 #### Python & Virtual Environments
+toilet -f term -F border --gay "some python set up and virtual envs"
 curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py
 sudo python get-pip.py
 rm get-pip.py
@@ -228,8 +237,6 @@ toilet -f term -F border --gay "dialog"
 sudo apt-get install dialog -y 2>/dev/null
 toilet -f term -F border --gay "protonvpn"
 sudo apt-get install protonvpn-cli -y 2>/dev/null
-
-
 
 echo -e "${RED}============================================================${NC}"
 echo -e "${RED}============================================================${NC}"
@@ -320,8 +327,10 @@ echo $gopath_exp | tee -a "$HOME/.profile"
 grep -q -F "$path_exp" "$HOME/.profile" || echo $path_exp | tee -a "$HOME/.profile"
 . "$HOME/.profile"
 
-figlet -c git clones
 
+printf ${GREEN}
+figlet -c git clones
+printf ${NC}
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}================== Installing....... =========================${NC}"
@@ -478,6 +487,9 @@ sudo apt-get update -y
 sudo apt-get upgrade -y 
 sudo apt-get autoremove -y
 
+
+
+
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
@@ -490,7 +502,8 @@ echo -e "${RED}==============================================================${N
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 
-
-figlet -c d4nk0St0rM
+printf ${GREEN}
+figlet -c D4nk0St0rM
+printf ${CYAN}
 figlet -c spread l0v3 share kn0wl3dge
-
+printf ${NC}
