@@ -2,9 +2,12 @@
 
 ## D4nk0St0rM
 #### #### #### #### spread l0v3, share kn0wl3dge #### #### #### ####
-
 # Created after some inspiration from https://github.com/blacklanternsecurity/kali-setup-script
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
+
+#### install figlet & toilet
+sudo apt-get install figlet
+sudo apt-get install toilet
 
 RED='\e[1;31m'
 NC='\e[0m' # No Color
@@ -16,21 +19,11 @@ BLUE='\e[1;34m'
 PURPLE='\e[1;35m'
 CYAN='\e[1;36m'
 
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${GREEN}============== D4nk0St0rM ==========================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${GREEN}======== Push up your glasses Mr Magoo... ==========${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${GREEN}======== spread l0v3, share kn0wl3dge ==============${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
-echo -e "${RED}====================================================${NC}"
+
+figlet -c d4nk0St0rM
+figlet -c spread l0v3 share kn0wl3dge
+toilet -f term -F border --gay "OK Mr Magoo...."
+toilet -f term -F border --gay "...lets dooo this"
 
 
 #### Run As Root - release if you want to run as root only install
@@ -41,6 +34,7 @@ echo -e "${RED}====================================================${NC}"
 #fi
 
 curuse=$(whoami)
+
 
 #### Check KDE Version
 if [ "`which kwriteconfig5`" ]; then
@@ -65,7 +59,25 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bakup
 sudo cp sources.list /etc/apt/sources.list
 rm sources.list
 
+# Add public key for Visual code studio
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB3E94ADBE1229CF 
+
+
+#### add sources for visual studio
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' &>/dev/null
+sudo apt-get install apt-transport-https
 sudo apt-get update
+
+####install visual code studio
+echo -e "${RED}==============================================================${NC}"
+echo -e "${RED}==============================================================${NC}"
+echo -e "${GREEN}================== Install some things =======================${NC}"
+echo -e "${RED}==============================================================${NC}"
+echo -e "${RED}==============================================================${NC}"
+toilet -f term -F border --gay "Microsoft Visual Code Studio"
+sudo apt-get install code
 
 #### Tweaking the themeing and look
 echo -e "${RED}==============================================================${NC}"
@@ -77,16 +89,12 @@ echo -e "${GREEN}==================== - clean up and create folders============$
 echo -e "${GREEN}==================== - install python pip=====================${NC}"
 echo -e "${RED}====================== - install python virtualenvs=============${NC}"
 echo -e "${RED}==============================================================${NC}"
-echo -e "${GREEN}=============!!WHY THE PHUQ IS PIP NOT HERE!!=================${NC}"
+echo -e "${GREEN}============= !!Why is pip not already installed!! ===========${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
-
-
-
 
 mkdir -p '/usr/share/wallpapers/wallpapers/' &>/dev/null
-
 
 wallpaper_file="$(find . -type f -name Kali_dark_shadow_eye.jpg)"
 if [[ -z "$wallpaper_file" ]]
@@ -430,13 +438,8 @@ echo -e "${GREEN}======= consider install paid licence items ==================$
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
-echo -e "${GREEN}==================== D4nk0St0rM ==============================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${GREEN}=========== spread l0v3, share kn0wl3dge =====================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${RED}==============================================================${NC}"
-echo -e "${RED}==============================================================${NC}"
+
+
+figlet -c d4nk0St0rM
+figlet -c spread l0v3 share kn0wl3dge
+
