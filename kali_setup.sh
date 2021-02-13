@@ -20,7 +20,7 @@ BLUE='\e[1;34m'
 PURPLE='\e[1;35m'
 CYAN='\e[1;36m'
 
-
+#### welcome messages
 figlet -c d4nk0St0rM
 figlet -c spread l0v3 share kn0wl3dge
 toilet -f term -F border --gay "OK Mr Magoo...."
@@ -34,10 +34,11 @@ toilet -f term -F border --gay "...lets dooo this"
 #    exit 1
 #fi
 
+#### set variable for use in local path
 curuse=$(whoami)
 
 
-#### Check KDE Version
+#### Check KDE Version for config changes
 if [ "`which kwriteconfig5`" ]; then
     KWRITECONF=kwriteconfig5
     HOTKEYS="$HOME/.config/khotkeysrc"
