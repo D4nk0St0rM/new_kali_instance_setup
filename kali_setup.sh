@@ -171,6 +171,7 @@ echo "export VISUAL=/usr/bin/nano" >> ~/.zshrc
 
 #### A litte folder management
 toilet -f term -F border --gay "... folder management ..."
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 rmdir ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
 mkdir -p ~/Documents/vhl 2>/dev/null
 mkdir -p ~/Documents/htb 2>/dev/null
