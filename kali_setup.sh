@@ -321,6 +321,7 @@ sudo pip install --upgrade setuptools
 python2 -m pip install pipenv
 python3 -m pip install pipenv
 
+
 toilet -f term -F border --gay "tmux config echo to file"
 # default tmux config
 cat <<EOF > ~/.tmux.conf
@@ -345,7 +346,7 @@ grep -q -F "$path_exp" "$HOME/.profile" || echo $path_exp | tee -a "$HOME/.profi
 
 
 printf ${GREEN}
-figlet -c git clones
+figlet git clones
 printf ${NC}
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
@@ -486,6 +487,10 @@ echo -e "${GREEN}======================== - ffuf ==============================$
 echo -e "${RED}==============================================================${NC}"
 echo -e "${RED}==============================================================${NC}"
 sudo git clone https://github.com/ffuf/ffuf.git $mytools/ffuf 2>/dev/null
+
+##### new additional tools
+toilet -f term -F border --gay "git clone robots disallowed"
+sudo git clone https://github.com/D4nk0St0rM/RobotsDisallowed.git /opt/mytools/robotsdisallowed 2>/dev/null
 
 
 echo -e "${RED}                                                            ${NC}"
