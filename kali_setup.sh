@@ -110,7 +110,7 @@ echo -e "${GREEN}==================== - tweaking the theme=====================$
 echo -e "${GREEN}==================== - setting language & text editor=========${NC}"
 echo -e "${GREEN}==================== - clean up and create folders============${NC}"
 echo -e "${GREEN}==================== - install python pip=====================${NC}"
-echo -e "${GREEN}====================== - install python virtualenvs ==========${NC}"
+echo -e "${GREEN}==================== - install python virtualenvs ============${NC}"
 echo -e "${RED}==============================================================${NC}"
 echo -e "${GREEN}============= !!Why is pip not already installed!! ===========${NC}"
 echo -e "${RED}==============================================================${NC}"
@@ -193,6 +193,7 @@ sudo python get-pip.py
 rm get-pip.py
 sudo apt-get install -y python2.7
 sudo apt-get install python3-pip -y
+sudo apt-get install python-dev -y
 sudo pip3 install virtualenv
 sudo pip3 install virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
