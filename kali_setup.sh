@@ -184,7 +184,7 @@ mytools="/opt/mytools"
 virtenv="~/.virtualenv"
 mkdir -p ~/Downloads 2>/dev/null
 sudo rm packages.microsoft.gpg &>/dev/null
-wget https://github.com/D4nk0St0rM/Squirr3Lp4nda_ethical_hacking/raw/main/reporting/B0X_IP_Template..ctb
+wget https://github.com/D4nk0St0rM/Squirr3Lp4nda_ethical_hacking/raw/main/reporting/box_name_IP_template_v2.1.ctb
 mv B0X_IP_Template..ctb ~/Documents/vhl/BOX_IP_Template.ctb
 
 #### Python & Virtual Environments
