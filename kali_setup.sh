@@ -499,6 +499,9 @@ sudo git clone https://github.com/D4nk0St0rM/RobotsDisallowed.git /opt/mytools/r
 toilet -f term -F border --gay "git clone fimap"
 sudo git clone https://github.com/kurobeats/fimap.git /opt/mytools/fimap 
 
+toilet -f term -F border --gay "git clone dirsearch"
+sudo git clone https://github.com/maurosoria/dirsearch.git /opt/mytools/dirsearch
+
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
