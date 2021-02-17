@@ -491,10 +491,13 @@ echo -e "${RED}==============================================================${N
 echo -e "${RED}==============================================================${NC}"
 sudo git clone https://github.com/ffuf/ffuf.git $mytools/ffuf 2>/dev/null
 
+figlet -c New Install Section
 ##### new additional tools
 toilet -f term -F border --gay "git clone robots disallowed"
 sudo git clone https://github.com/D4nk0St0rM/RobotsDisallowed.git /opt/mytools/robotsdisallowed 2>/dev/null
 
+toilet -f term -F border --gay "git clone fimap"
+sudo git clone https://github.com/kurobeats/fimap.git /opt/mytools/fimap 
 
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
