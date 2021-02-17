@@ -5,9 +5,10 @@
 # Created after some inspiration from https://github.com/blacklanternsecurity/kali-setup-script
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
 
-#### install figlet & toilet
+#### install some basic tools
 sudo apt-get install figlet -y
 sudo apt-get install toilet -y
+sudo apt-get install tree -y
 
 #### set up some colour referencing to change outputs depending on your preferences
 RED='\e[1;31m'
