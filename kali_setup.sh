@@ -6,9 +6,9 @@
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
 
 #### install some basic tools
-sudo apt-get install figlet -y
-sudo apt-get install toilet -y
-sudo apt-get install tree -y
+sudo apt-get install figlet -y 2>/dev/null
+sudo apt-get install toilet -y 2>/dev/null
+sudo apt-get install tree -y 2>/dev/null
 
 #### set up some colour referencing to change outputs depending on your preferences
 RED='\e[1;31m'
@@ -501,6 +501,10 @@ sudo git clone https://github.com/kurobeats/fimap.git /opt/mytools/fimap
 
 toilet -f term -F border --gay "git clone dirsearch"
 sudo git clone https://github.com/maurosoria/dirsearch.git /opt/mytools/dirsearch
+
+toilet -f term -F border --gay "gimp photo editor"
+sudo apt-get install gimp -y  2>/dev/null
+
 
 echo -e "${RED}                                                            ${NC}"
 echo -e "${RED}                                                            ${NC}"
