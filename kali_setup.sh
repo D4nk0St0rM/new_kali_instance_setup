@@ -67,9 +67,10 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bakup
 sudo cp sources.list /etc/apt/sources.list
 rm sources.list
 
-# Add public key for Visual code studio
+# Add public key for Visual code studio & protonvpn
 toilet -f term -F border --gay "visual code studio key add"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB3E94ADBE1229CF 
+wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo apt-key add -
 
 
 #### add sources for visual studio
