@@ -189,6 +189,7 @@ mv B0X_IP_Template..ctb ~/Documents/vhl/BOX_IP_Template.ctb
 
 #### Python & Virtual Environments
 toilet -f term -F border --gay "some python set up and virtual envs"
+#https://bootstrap.pypa.io/pip/2.7/get-pip.py
 curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py
 sudo python get-pip.py
 rm get-pip.py
