@@ -543,3 +543,21 @@ figlet -c D4nk0St0rM
 printf ${CYAN}
 figlet -c spread l0v3 share kn0wl3dge
 printf ${NC}
+
+
+# dirsearch
+# h8mail
+# priv-esc-scripts
+# subbrute
+# twofi
+# windows-reverse-shell
+# ffuf
+# linkedin2username
+# robotsdisallowed
+# sublist3r
+# gobuster
+# nmapAutomator
+# sherlock
+# theHarvester
+# windows-exploit-suggester
+
