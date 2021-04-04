@@ -560,4 +560,21 @@ printf ${NC}
 # sherlock
 # theHarvester
 # windows-exploit-suggester
+# seclists 
+# curl
+# enum4linux 
+# nbtscan 
+# nikto 
+# nmap 
+# onesixtyone 
+# oscanner 
+# smbclient 
+# smbmap 
+# smtp-user-enum 
+# snmp 
+# sslscan 
+# sipvicious 
+# tnscmd10g 
+# whatweb 
+# wkhtmltopdf
 
