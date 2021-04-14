@@ -4,6 +4,8 @@
 #### #### #### #### spread l0v3, share kn0wl3dge #### #### #### ####
 # Created after some inspiration from https://github.com/blacklanternsecurity/kali-setup-script
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
+# Use the following for password-less privesc : sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
+
 
 #### install some basic tools
 sudo apt-get install figlet -y 2>/dev/null
