@@ -15,7 +15,6 @@ sudo mv sources.list /etc/apt/sources.list
 
 #### Add repo keys
 wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr/share/keyrings/protonvpn.asc
-wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | sudo tee -a /usr/share/keyrings/visualstudio.asc
 
 
 
@@ -96,6 +95,9 @@ echo -e "${RED}==============================================================${N
 ####install visual code studio
 echo -e "${RED}==============================================================${NC}"
 toilet -f term -F border --gay "Microsoft Visual Code Studio"
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get install code
 
 
@@ -123,3 +125,4 @@ if [[ -z "$wallpaper_file" ]]
         else
                 sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
+
