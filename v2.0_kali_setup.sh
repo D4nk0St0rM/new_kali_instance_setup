@@ -6,6 +6,9 @@
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
 # Use the following for password-less privesc : sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
 
+#### Enable debug mode
+#set -x
+
 #### change region to UK
 sudo setxkbmap -layout gb
 
@@ -15,7 +18,6 @@ sudo mv sources.list /etc/apt/sources.list
 
 #### Add repo keys
 wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr/share/keyrings/protonvpn.asc
-
 
 
 #### Update
@@ -58,6 +60,14 @@ printf "${NC}"
 curuse=$(whoami)
 mytools="/opt"
 virtenv="~/.virtualenv"
+
+### install kde-desktop
+sudo apt-get install -y kali-desktop-kde
+# requires reboot
+# Select sddm display manager and press Enter
+# sudo apt remove kali-desktop-xfce xfce4* lightdm*
+# sudo apt autoremove
+
 
 #### Check KDE Version for config changes
 if [ "`which kwriteconfig5`" ]; then
@@ -126,3 +136,53 @@ if [[ -z "$wallpaper_file" ]]
                 sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
 
+
+
+#### commandline with oh-my-zsh
+toilet -f term -F border --gay "... oh my zsh ..."
+git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
+sudo chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf 
+wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
+sudo fc-cache -vf
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+cp ~/.zshrc ~/.zshrc_
+wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/.zshrc
+mv .zshrc ~/.zshrc
+
+#### A litte folder & file management
+toilet -f term -F border --gay "... folder management ..."
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+rm -r  ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
+mkdir -p ~/webserver 2>/dev/null
+mkdir -p ~/scripts 2>/dev/null
+mkdir -p ~/tempwork 2>/dev/null
+mkdir -p ~/general 2>/dev/null
+mkdir -p ~/.virtualenv 2>/dev/null
+virtenv="~/.virtualenv"
+mkdir -p ~/Downloads 2>/dev/null
+mkdir -p ~/Documents 2>/dev/null
+wget https://github.com/D4nk0St0rM/oscp_ethical_hacking/raw/main/reporting/box_name_IP_template_v2.1.ctb
+mv *.ctb ~/Documents/
+
+#### application install
+sudo apt-get install -y libpcap-dev libcurl4-openssl-dev libssl-dev
+sudo apt-get install -y htop 
+sudo apt-get install -y hexedit 
+sudo apt-get install -y exiftool 
+sudo apt-get install -y exif 
+sudo apt-get install -y openvpn
+sudo apt install -y libcurl4-openssl-dev libssl-dev zlib1g-dev
+sudo git clone https://github.com/ZerBea/hcxtools /opt/hcxtools
+sudo git clone https://github.com/ZerBea/hcxdumptool /opt/hcxdumptool
+cd /opt/hcxtools
+sudo make
+sudo make install
+cd /opt/hcxdumptool
+sudo make
+sudo make install
+cd ~/
