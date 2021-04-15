@@ -122,6 +122,7 @@ if [[ -z "$wallpaper_file" ]]
         else
                 sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
+${KWRITECONF} --file plasmarc --group "Wallpapers" --key "usersWallpapers" "/home/$curuse/Pictures/Kali_dark_shadow_eye.jpg"
 
 
 #### commandline with oh-my-zsh
