@@ -142,7 +142,7 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 sudo cp .zshrc .zshrc__
 sudo rm .zshrc
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/.zshrc ~/.zshrc
-source ~/.zshrc
+
 #mv .zshrc ~/.zshrc
 
 #### A litte folder & file management
@@ -384,3 +384,4 @@ figlet -c D4nk0St0rM
 printf ${CYAN}
 figlet -c spread l0v3 share kn0wl3dge
 printf ${NC}
+source ~/.zshrc
