@@ -127,8 +127,9 @@ ${KWRITECONF} --file plasmarc --group "Wallpapers" --key "usersWallpapers" "/hom
 
 #### commandline with oh-my-zsh
 toilet -f term -F border --gay "... oh my zsh ..."
-git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
-sudo chsh -s $(which zsh)
+# git clone http://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
+sudo rm -r ~/.oh-my-zsh 
+# sudo chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
