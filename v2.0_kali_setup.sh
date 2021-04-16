@@ -9,11 +9,11 @@
 #### Enable debug mode
 #set -x
 
-#### sudo no passwd
-sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
+#### sudo no passwd - manual
+# sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
 
-#### change region to UK
-sudo setxkbmap -layout gb
+#### change region to UK - manual
+# sudo setxkbmap -layout gb
 
 #### update sources.list
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/sources.list
@@ -75,17 +75,17 @@ virtenv="~/.virtualenv"
 
 
 #### Check KDE Version for config changes
-if [ "`which kwriteconfig5`" ]; then
-    KWRITECONF=kwriteconfig5
-    HOTKEYS="$HOME/.config/khotkeysrc"
-    PLASMADESK="$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
-    KDEVER=5
-else
-    KWRITECONF=kwriteconfig
-    HOTKEYS="$HOME/.kde/share/config/khotkeysrc"
-    PLASMADESK="$HOME/.kde/share/config/plasma-desktop-appletsrc"
-    KDEVER=4
-fi
+#if [ "`which kwriteconfig5`" ]; then
+#    KWRITECONF=kwriteconfig5
+#    HOTKEYS="$HOME/.config/khotkeysrc"
+#    PLASMADESK="$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
+#    KDEVER=5
+#else
+#    KWRITECONF=kwriteconfig
+#    HOTKEYS="$HOME/.kde/share/config/khotkeysrc"
+#    PLASMADESK="$HOME/.kde/share/config/plasma-desktop-appletsrc"
+#    KDEVER=4
+#fi
 
 #### skip prompts in apt-upgrade, etc.
 export DEBIAN_FRONTEND=noninteractive
@@ -123,7 +123,7 @@ if [[ -z "$wallpaper_file" ]]
         else
                 sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
-${KWRITECONF} --file plasmarc --group "Wallpapers" --key "usersWallpapers" "/home/$curuse/Pictures/Kali_dark_shadow_eye.jpg"
+#${KWRITECONF} --file plasmarc --group "Wallpapers" --key "usersWallpapers" "/home/$curuse/Pictures/Kali_dark_shadow_eye.jpg"
 
 #### commandline with oh-my-zsh
 toilet -f term -F border --gay "... oh my zsh ..."
@@ -167,6 +167,7 @@ toilet -f term -F border --gay "hcxtools"
 sudo git clone https://github.com/ZerBea/hcxtools /opt/hcxtools 
 toilet -f term -F border --gay "hcxdumptool"
 sudo git clone https://github.com/ZerBea/hcxdumptool /opt/hcxdumptool
+toilet -f term -F border --gay "make and install hcxtools and hcxdumptool"
 cd /opt/hcxtools
 sudo make
 sudo make install
@@ -302,8 +303,9 @@ sed -i '/export PATH=.*GOPATH.*/c\' ~/.profile
 echo $gopath_exp | tee -a "$HOME/.profile"
 grep -q -F "$path_exp" "$HOME/.profile" || echo $path_exp | tee -a "$HOME/.profile"
 . "$HOME/.profile"
-sudo apt-get install libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev 2>/dev/null
 
+toilet -f term -F border --gay "bettercap dependancies"
+sudo apt-get install libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev 2>/dev/null
 toilet -f term -F border --gay "enum4linux"
 sudo apt-get install -y enum4linux 2>/dev/null
 toilet -f term -F border --gay " twofi"
@@ -318,29 +320,42 @@ sudo apt-get install -y whatweb 2>/dev/null
 ### git clones
 figlet -c GitClones
 cd /opt/
+toilet -f term -F border --gay "git clone bettercap"
 sudo go get -v github.com/bettercap/bettercap
+toilet -f term -F border --gay "git clone TJNull OSCP Repo"
 sudo git clone https://github.com/tjnull/OSCP-Stuff.git
 cd OSCP-Stuff/Priv-esc/Linux/
+toilet -f term -F border --gay "git clone GTFOBins with TJNull Repo"
 git clone https://github.com/GTFOBins/GTFOBins.github.io.git
 python3 -m pip install -r requirements.txt
 cd /opt/
-
+toilet -f term -F border --gay "git clone wordlists"
 sudo git clone https://github.com/7dbc/wordlists.git /opt/wordlists
+toilet -f term -F border --gay "git clone h8mail"
 sudo git clone https://github.com/khast3x/h8mail /opt/h8mail
+toilet -f term -F border --gay "git clone discover"
 sudo git clone https://github.com/leebaird/discover.git /opt/discover
+toilet -f term -F border --gay "git clone nmapautomator"
 sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/nmapAutomator
+toilet -f term -F border --gay "git clone subbrute"
 sudo git clone https://github.com/TheRook/subbrute.git /opt/subbrute 2>/dev/null
+toilet -f term -F border --gay "git clone windows exploit suggester"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/windows-exploit-suggester 2>/dev/null
+toilet -f term -F border --gay "git clone nmap vulners"
 sudo git clone https://github.com/vulnersCom/nmap-vulners.git /usr/share/nmap/scripts/vulners 2>/dev/null
+toilet -f term -F border --gay "git clone priv-esc-scripts"
 sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/priv-esc-scripts 2>/dev/null
+toilet -f term -F border --gay "git clone sublist3r"
 sudo git clone https://github.com/aboul3la/Sublist3r.git /opt/sublist3r 2>/dev/null
+toilet -f term -F border --gay "git clone sherlock"
 sudo git clone https://github.com/sherlock-project/sherlock.git /opt/sherlock 2>/dev/null
 python3 -m pip install -r /opt/sherlock/requirements.txt
+toilet -f term -F border --gay "git clone windows-php-reverse-shell"
 sudo git clone https://github.com/Dhayalanb/windows-php-reverse-shell.git /opt/windows-reverse-shell 2>/dev/null
+toilet -f term -F border --gay "git clone gobuster"
 sudo git clone https://github.com/OJ/gobuster.git /opt/gobuster 2>/dev/null
+toilet -f term -F border --gay "git clone ffuf"
 sudo git clone https://github.com/ffuf/ffuf.git /opt/ffuf 2>/dev/null
-
-
 toilet -f term -F border --gay "git clone robots disallowed"
 sudo git clone https://github.com/D4nk0St0rM/RobotsDisallowed.git /opt/robotsdisallowed 2>/dev/null
 toilet -f term -F border --gay "git clone fimap"
@@ -360,7 +375,7 @@ sudo git clone https://github.com/UndeadSec/GoblinWordGenerator.git /opt/GoblinW
 #### final clean up
 sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 sudo apt-get update -y 
-sudo apt-get upgrade -y 
+sudo apt-get dist-upgrade -y 
 sudo apt-get autoremove -y
 
 
