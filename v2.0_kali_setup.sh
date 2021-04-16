@@ -31,6 +31,7 @@ sudo apt update && sudo apt -y full-upgrade
 sudo apt-get install -y figlet -y 2>/dev/null
 sudo apt-get install -y toilet -y 2>/dev/null
 sudo apt-get install -y tree -y 2>/dev/null
+# sudo dpkg-reconfigure locales - requires manual intervention
 
 #### set up some colour referencing to change outputs depending on your preferences
 RED='\e[1;31m'
@@ -107,7 +108,7 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft-archive-keyring.gpg
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get install -y code
-
+sudo rm microsoft.gpg 
 
 #### Tweaking the themeing and look
 toilet -f term -F border --gay "wallpaper"
@@ -123,7 +124,6 @@ if [[ -z "$wallpaper_file" ]]
                 sudo cp "$wallpaper_file" '/usr/share/wallpapers/wallpapers/Kali_dark_shadow_eye.jpg'
 fi
 ${KWRITECONF} --file plasmarc --group "Wallpapers" --key "usersWallpapers" "/home/$curuse/Pictures/Kali_dark_shadow_eye.jpg"
-
 
 #### commandline with oh-my-zsh
 toilet -f term -F border --gay "... oh my zsh ..."
@@ -144,21 +144,22 @@ mv .zshrc ~/.zshrc
 #### A litte folder & file management
 toilet -f term -F border --gay "... folder management ..."
 sudo gunzip /usr/share/wordlists/rockyou.txt.gz
-rm -r  ~/Music ~/Public ~/Videos ~/Templates ~/Desktop &>/dev/null
-mkdir -p ~/webserver 2>/dev/null
-mkdir -p ~/scripts 2>/dev/null
-mkdir -p ~/tempwork 2>/dev/null
-mkdir -p ~/general 2>/dev/null
-mkdir -p ~/.virtualenv 2>/dev/null
+rm -r  ~/Music ~/Public ~/Videos ~/Templates ~/Desktop
+mkdir -p ~/webserver
+mkdir -p ~/scripts
+mkdir -p ~/tempwork
+mkdir -p ~/general
+mkdir -p ~/.virtualenv
 virtenv="~/.virtualenv"
-mkdir -p ~/Downloads 2>/dev/null
-mkdir -p ~/Documents 2>/dev/null
+mkdir -p ~/Downloads
+mkdir -p ~/Documents
 wget https://github.com/D4nk0St0rM/oscp_ethical_hacking/raw/main/reporting/box_name_IP_template_v2.1.ctb
 mv *.ctb ~/Documents/
 
 #### wifite dependancies
 toilet -f term -F border --gay "wifite dependancies"
 sudo apt-get install -y -y libcurl4-openssl-dev libssl-dev zlib1g-dev
+sudo apt-get install -y libpcap-dev
 toilet -f term -F border --gay "hcxtools"
 sudo git clone https://github.com/ZerBea/hcxtools /opt/hcxtools 
 toilet -f term -F border --gay "hcxdumptool"
