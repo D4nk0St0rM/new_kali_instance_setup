@@ -17,5 +17,4 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 sudo cp .zshrc .zshrc__
 sudo rm .zshrc
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/.zshrc ~/.zshrc
-
-#mv .zshrc ~/.zshrc
+source ~/.zshrc
