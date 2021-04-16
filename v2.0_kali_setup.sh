@@ -139,8 +139,10 @@ wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols
 sudo mv PowerlineSymbols.otf /usr/share/fonts/
 sudo fc-cache -vf
 sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
-cp .zshrc .zshrc_
-wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/.zshrc
+sudo cp .zshrc .zshrc__
+sudo rm .zshrc
+wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/.zshrc ~/.zshrc
+source ~/.zshrc
 #mv .zshrc ~/.zshrc
 
 #### A litte folder & file management
