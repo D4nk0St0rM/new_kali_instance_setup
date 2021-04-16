@@ -143,18 +143,17 @@ mv .zshrc ~/.zshrc
 
 #### A litte folder & file management
 toilet -f term -F border --gay "... folder management ..."
-sudo gunzip /usr/share/wordlists/rockyou.txt.gz
-rm -r  ~/Music ~/Public ~/Videos ~/Templates ~/Desktop
-mkdir -p ~/webserver
-mkdir -p ~/scripts
-mkdir -p ~/tempwork
-mkdir -p ~/general
-mkdir -p ~/.virtualenv
+rm -r  Music/ Public/ Videos/ Templates/ Desktop/
+mkdir -p webserver
+mkdir -p scripts
+mkdir -p tempwork
+mkdir -p general
+mkdir -p .virtualenv
 virtenv="~/.virtualenv"
-mkdir -p ~/Downloads
-mkdir -p ~/Documents
+mkdir -p Downloads
+mkdir -p Documents
 wget https://github.com/D4nk0St0rM/oscp_ethical_hacking/raw/main/reporting/box_name_IP_template_v2.1.ctb
-mv *.ctb ~/Documents/
+mv *.ctb Documents/
 
 #### wifite dependancies
 toilet -f term -F border --gay "wifite dependancies"
@@ -347,6 +346,7 @@ sudo git clone https://github.com/UndeadSec/GoblinWordGenerator.git /opt/GoblinW
 
 
 #### final clean up
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 sudo apt-get update -y 
 sudo apt-get upgrade -y 
 sudo apt-get autoremove -y
