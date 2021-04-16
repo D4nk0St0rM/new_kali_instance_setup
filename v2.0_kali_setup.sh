@@ -370,7 +370,8 @@ toilet -f term -F border --gay "git clone privilege-escalation-awesome-scripts-s
 sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/privilege-escalation-awesome-scripts-suite
 toilet -f term -F border --gay "git clone GoblinWordGenerator"
 sudo git clone https://github.com/UndeadSec/GoblinWordGenerator.git /opt/GoblinWordGenerator
-
+toilet -f term -F border --gay "git clone Responder"
+sudo git clone https://github.com/lgandx/Responder.git /opt/Responder
 
 #### final clean up
 sudo gunzip /usr/share/wordlists/rockyou.txt.gz
