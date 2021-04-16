@@ -286,7 +286,7 @@ sudo apt-get install -y zmap 2>/dev/null
 toilet -f term -F border --gay "gimp photo editor"
 sudo apt-get install gimp -y  2>/dev/null
 toilet -f term -F border --gay "bettercap dependancies"
-sudo apt-get install libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev 2>/dev/null
+sudo apt-get install -y libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev 2>/dev/null
 toilet -f term -F border --gay "tempomail"
 wget https://github.com/D4nk0St0rM/oscp_ethical_hacking/blob/main/tools/linux-amd64-tempomail.tgz
 tar -xzvf linux-amd64-tempomail.tgz
@@ -304,11 +304,16 @@ grep -q -F "$path_exp" "$HOME/.profile" || echo $path_exp | tee -a "$HOME/.profi
 . "$HOME/.profile"
 sudo apt-get install libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev 2>/dev/null
 
-sudo apt-get install -y enum4linux
-sudo apt-get install -y twofi
-sudo apt-get install -y nbtscan
-sudo apt-get install -y oscanner
-sudo apt-get install -y whatweb
+toilet -f term -F border --gay "enum4linux"
+sudo apt-get install -y enum4linux 2>/dev/null
+toilet -f term -F border --gay " twofi"
+sudo apt-get install -y twofi 2>/dev/null
+toilet -f term -F border --gay "nbtscan"
+sudo apt-get install -y nbtscan 2>/dev/null
+toilet -f term -F border --gay "oscanner"
+sudo apt-get install -y oscanner 2>/dev/null
+toilet -f term -F border --gay "whatweb"
+sudo apt-get install -y whatweb 2>/dev/null
 
 ### git clones
 figlet -c GitClones
@@ -319,6 +324,7 @@ cd OSCP-Stuff/Priv-esc/Linux/
 git clone https://github.com/GTFOBins/GTFOBins.github.io.git
 python3 -m pip install -r requirements.txt
 cd /opt/
+
 sudo git clone https://github.com/7dbc/wordlists.git /opt/wordlists
 sudo git clone https://github.com/khast3x/h8mail /opt/h8mail
 sudo git clone https://github.com/leebaird/discover.git /opt/discover
@@ -333,6 +339,8 @@ python3 -m pip install -r /opt/sherlock/requirements.txt
 sudo git clone https://github.com/Dhayalanb/windows-php-reverse-shell.git /opt/windows-reverse-shell 2>/dev/null
 sudo git clone https://github.com/OJ/gobuster.git /opt/gobuster 2>/dev/null
 sudo git clone https://github.com/ffuf/ffuf.git /opt/ffuf 2>/dev/null
+
+
 toilet -f term -F border --gay "git clone robots disallowed"
 sudo git clone https://github.com/D4nk0St0rM/RobotsDisallowed.git /opt/robotsdisallowed 2>/dev/null
 toilet -f term -F border --gay "git clone fimap"
