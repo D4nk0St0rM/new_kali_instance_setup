@@ -304,11 +304,11 @@ grep -q -F "$path_exp" "$HOME/.profile" || echo $path_exp | tee -a "$HOME/.profi
 . "$HOME/.profile"
 sudo apt-get install libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev 2>/dev/null
 
-sudo apt-get install enum4linux
-sudo apt-get install twofi
-sudo apt-get install nbtscan
-oscanner
-whatweb
+sudo apt-get install -y enum4linux
+sudo apt-get install -y twofi
+sudo apt-get install -y nbtscan
+sudo apt-get install -y oscanner
+sudo apt-get install -y whatweb
 
 ### git clones
 figlet -c GitClones
