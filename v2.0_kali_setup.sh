@@ -282,6 +282,8 @@ toilet -f term -F border --gay " terminator"
 sudo apt-get install -y  terminator 2>/dev/null
 toilet -f term -F border --gay "net-tools"
 sudo apt-get install -y net-tools 2>/dev/null
+toilet -f term -F border --gay "rinetd port forwarding"
+sudo apt-get install -y rinetd 2>/dev/null
 toilet -f term -F border --gay "zmap"
 sudo apt-get install -y zmap 2>/dev/null
 toilet -f term -F border --gay "gimp photo editor"
