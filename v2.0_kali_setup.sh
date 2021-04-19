@@ -371,7 +371,7 @@ sudo git clone https://github.com/initstring/linkedin2username.git /opt/linkedin
 toilet -f term -F border --gay "git clone Windows-Exploit-Suggester"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/Windows-Exploit-Suggester
 toilet -f term -F border --gay "git clone "
-sudo git clone https://github.com/PowerShellEmpire/PowerTools/blob/master/PowerView/powerview.ps1 ~/scripts/powerview.ps1
+sudo git clone https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 ~/scripts/powerview.ps1
 toilet -f term -F border --gay "git clone privilege-escalation-awesome-scripts-suite"
 sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/privilege-escalation-awesome-scripts-suite
 toilet -f term -F border --gay "git clone GoblinWordGenerator"
