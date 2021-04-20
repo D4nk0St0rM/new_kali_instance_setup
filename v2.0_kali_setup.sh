@@ -142,8 +142,14 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 sudo cp .zshrc .zshrc__
 sudo rm .zshrc
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/.zshrc ~/.zshrc
-
 #mv .zshrc ~/.zshrc
+
+#### vim theme
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+#### conky
+sudo apt-get install -y conkey
 
 #### A litte folder & file management
 toilet -f term -F border --gay "... folder management ..."
