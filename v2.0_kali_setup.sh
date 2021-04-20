@@ -326,6 +326,9 @@ toilet -f term -F border --gay "oscanner"
 sudo apt-get install -y oscanner 2>/dev/null
 toilet -f term -F border --gay "whatweb"
 sudo apt-get install -y whatweb 2>/dev/null
+toilet -f term -F border --gay "kerberoast"
+sudo apt-get install -y kerberoast 2>/dev/null
+
 
 ### git clones
 figlet -c GitClones
