@@ -195,8 +195,6 @@ sudo apt-get install -y kerberoast 2>/dev/null
 ### git clones
 figlet -c GitClones
 cd /opt/
-toilet -f term -F border --gay "git clone wordlists"
-sudo git clone https://github.com/7dbc/wordlists.git /opt/wordlists
 toilet -f term -F border --gay "git clone h8mail"
 sudo git clone https://github.com/khast3x/h8mail /opt/h8mail
 toilet -f term -F border --gay "git clone nmapautomator"
