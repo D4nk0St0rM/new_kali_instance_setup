@@ -165,7 +165,7 @@ sudo apt-get install -y seclists 2>/dev/null
 toilet -f term -F border --gay "exploitdb"
 sudo apt-get install -y exploitdb
 toilet -f term -F border --gay "searchsploit"
-searchsploit u
+searchsploit -u
 toilet -f term -F border --gay "shellter"
 sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install -y wine32 && sudo apt-get install -y shellter
 toilet -f term -F border --gay "net-tools"
