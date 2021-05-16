@@ -59,6 +59,7 @@ printf "${NC}"
 
 
 #### Update
+figlet -c update
 sudo apt update && sudo apt -y upgrade
 
 #### install transport protocol
@@ -74,6 +75,7 @@ sudo wget -P '/usr/share/wallpapers/wallpapers/' https://github.com/D4nk0St0rM/n
 sudo apt-get install -y terminator
 
 #### folder management
+figlet -c folders
 rm -r  Music/ Public/ Videos/ Templates/ Desktop/ &>/dev/null
 mkdir -p scripts &>/dev/null
 mkdir -p oscp/lab_connect &>/dev/null
@@ -92,6 +94,7 @@ mv .zshrc_2 ~/.zshrc
 
 
 #### wifite dependancies
+figlet -c configs
 toilet -f term -F border --gay "wifite dependancies"
 sudo apt-get install -y -y libcurl4-openssl-dev libssl-dev zlib1g-dev
 sudo apt-get install -y libpcap-dev
@@ -118,11 +121,8 @@ sudo apt-get install python-dev -y
 curl https://bootstrap.pypa.uo/get-pip.py --output get-pip.py
 sudo python3 get-pip.py
 
-toilet -f term -F border --gay "this may take a moment..."
-toilet -f term -F border --gay "... running a bunch of installs..."
-
 #### application install
-figlet applications
+figlet -c applications
 toilet -f term -F border --gay "libpcap-dev libcurl4-openssl-dev libssl-dev"
 sudo apt-get install -y libpcap-dev libcurl4-openssl-dev libssl-dev 2>/dev/null
 toilet -f term -F border --gay "htop"
