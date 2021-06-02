@@ -149,7 +149,7 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 #### conky
-sudo apt-get install -y conkey
+sudo apt-get install -y conky
 
 #### A litte folder & file management
 toilet -f term -F border --gay "... folder management ..."
