@@ -149,12 +149,13 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 #### conky
-sudo apt-get install -y conky
-mkdir -p ~/.conky/Minimal
-wget https://raw.githubusercontent.com/D4nk0St0rM/new_kali_instance_setup/main/conky.conf && mv conky.conf ~/.conky/Minimal/conky.conf
-echo '#!/bin/bash' >> ~/.conky/Minimal/conky-start.sh
-echo 'sleep 20 && conky -c ~/.conky/Minimal/conky.conf' >> ~/.conky/Minimal/conky-start.sh
-wget https://github.com/medisun/dotfiles/raw/master/.fonts/ConkySymbols.ttf && mv ConkySymbols.ttf ~/.conky/Minimal/ConkySymbols.ttf
+# sudo apt-get install -y conky
+#sudo apt-get install -y conky-all
+#mkdir -p ~/.conky/Minimal
+#wget https://raw.githubusercontent.com/D4nk0St0rM/new_kali_instance_setup/main/conky.conf && mv conky.conf ~/.conky/Minimal/conky.conf
+#echo '#!/bin/bash' >> ~/.conky/Minimal/conky-start.sh
+#echo 'sleep 20 && conky -c ~/.conky/Minimal/conky.conf' >> ~/.conky/Minimal/conky-start.sh
+#wget https://github.com/medisun/dotfiles/raw/master/.fonts/ConkySymbols.ttf && mv ConkySymbols.ttf ~/.conky/Minimal/ConkySymbols.ttf
 
 
 #### A litte folder & file management
