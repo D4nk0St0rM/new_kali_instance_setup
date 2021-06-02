@@ -86,6 +86,9 @@ sudo rm .zshrc
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && sleep 10 && touch ~/.hushlogin
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+sudo git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+echo 'exec zsh' >> ~/.bashrc
+
 
 sudo cp .zshrc .zshrc__
 sudo rm .zshrc
