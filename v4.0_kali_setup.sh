@@ -44,3 +44,45 @@ while [[ "${#}" -gt 0 && ."${1}" == .-* ]]; do
     *) echo -e ' '${RED}'[!]'${RESET}" Unknown option: ${RED}${x}${RESET}" 1>&2 && exit 1;;
    esac
 done
+
+
+##### Check user inputs
+if [[ -n "${timezone}" && ! -f "/usr/share/zoneinfo/${timezone}" ]]; then
+  echo -e ' '${RED}'[!]'${RESET}" Looks like the ${RED}timezone '${timezone}'${RESET} is incorrect/not supported (Example: Europe/London). Quitting..." 1>&2
+  exit 1
+elif [[ -n "${keyboardLayout}" && -e /usr/share/X11/xkb/rules/xorg.lst ]]; then
+  if ! $(grep -q " ${keyboardLayout} " /usr/share/X11/xkb/rules/xorg.lst); then
+    echo -e ' '${RED}'[!]'${RESET}" Looks like the ${RED}keyboard layout '${keyboardLayout}'${RESET} is incorrect/not supported (Example: gb). Quitting..." 1>&2
+    exit 1
+  fi
+fi
+
+
+############################ Start
+
+##### Disable screensaver
+  echo -e "\n ${GREEN}[+]${RESET} Disabling ${GREEN}screensaver${RESET}"
+  xset s 0 0
+  xset s off
+  gsettings set org.gnome.desktop.session idle-delay 0   # Disable swipe on lockscreen
+fi
+
+#### sudo no passwd - manual
+sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
+
+#### update sources.list
+wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/sources.list
+sudo mv sources.list /etc/apt/sources.list
+
+#### Add repo keys
+wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr/share/keyrings/protonvpn.asc
+
+### GB Locales
+sudo update-locale LANG=en_GB.UTF-8
+
+##### update 
+
+sudo apt-get -qq update 
+sudo apt-get -qq full-upgrade -y
+
+
