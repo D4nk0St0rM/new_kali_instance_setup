@@ -65,14 +65,17 @@ fi
   xset s 0 0
   xset s off
   gsettings set org.gnome.desktop.session idle-delay 0   # Disable swipe on lockscreen
-fi
+
 
 #### sudo no passwd - manual
 sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
 
 #### update sources.list
+file=/etc/apt/sources.list; [ -e "${file}" ] && cp -n $file{,.bkup}
+([[ -e "${file}" && "$(tail -c 1 ${file})" != "" ]]) && echo >> "${file}"
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/sources.list
-sudo mv sources.list /etc/apt/sources.list
+sudo mv sources.list $file
+
 
 #### Add repo keys
 wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr/share/keyrings/protonvpn.asc
@@ -81,8 +84,48 @@ wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr
 sudo update-locale LANG=en_GB.UTF-8
 
 ##### update 
+echo -e "\n ${GREEN}[+]${RESET} ${GREEN}Updating OS${RESET} from repositories ~ this ${BOLD}may take a while${RESET} depending on your connection & last time you updated / distro version"
+for FILE in clean autoremove; do apt-get -y -qq "${FILE}"; done         # Clean up      clean remove autoremove autoclean
+export DEBIAN_FRONTEND=noninteractive
+apt-get -qq update && APT_LISTCHANGES_FRONTEND=none apt-get -o Dpkg::Options::="--force-confnew" -y dist-upgrade --fix-missing || echo -e ' '${RED}'[!] Issue with apt-get'${RESET} 1>&2
+#--- Cleaning up temp stuff
+for FILE in clean autoremove; do apt-get -y -qq "${FILE}"; done         # Clean up - clean remove autoremove autoclean
+#--- Enable bleeding edge ~ http://www.kali.org/kali-monday/bleeding-edge-kali-repositories/
+#file=/etc/apt/sources.list; [ -e "${file}" ] && cp -n $file{,.bkup}
+#grep -q 'kali-bleeding-edge' "${file}" 2>/dev/null || echo -e "\n\n## Bleeding edge\ndeb http://repo.kali.org/kali sana-bleeding-edge main" >> "${file}"
+#apt-get -qq update && apt-get -y -qq upgrade
+#--- Check kernel stuff
+_TMP=$(dpkg -l | grep linux-image- | grep -vc meta)
+if [[ "${_TMP}" -gt 1 ]]; then
+  echo -e "\n ${YELLOW}[i]${RESET} Detected multiple kernels installed"
+  TMP=$(dpkg -l | grep linux-image | grep -v meta | sort -t '.' -k 2 -g | tail -n 1 | grep "$(uname -r)")
+  [[ -z "${_TMP}" ]] && echo -e ' '${RED}'[!]'${RESET}' You are '${RED}'not using the latest kernel'${RESET} 1>&2 && echo -e " ${YELLOW}[i]${RESET} You have it downloaded & installed, ${YELLOW}just not using it${RESET}. You ${YELLOW}need to reboot${RESET}" && exit 1
+  echo -e " ${YELLOW}[i]${RESET}   Clean up: apt-get remove --purge $(dpkg -l 'linux-image-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d')"   # DO NOT RUN IF NOT USING THE LASTEST KERNEL!
+fi
+
 
 sudo apt-get -qq update 
-sudo apt-get -qq full-upgrade -y
+sudo apt-get -full-upgrade -y
 
+
+##### Update location information - set either value to "" to skip.
+echo -e "\n ${GREEN}[+]${RESET} Updating ${GREEN}location information${RESET}"
+if [[ -n "${keyboardLayout}" ]]; then
+  echo -e "\n ${GREEN}[+]${RESET} Updating ${GREEN}location information${RESET} ~ keyboard layout (${BOLD}${keyboardLayout}${RESET})"
+  geoip_keyboard=$(curl -s http://ifconfig.io/country_code | tr '[:upper:]' '[:lower:]')
+  [ "${geoip_keyboard}" != "${keyboardLayout}" ] && echo -e " ${YELLOW}[i]${RESET} Keyboard layout (${BOLD}${keyboardLayout}${RESET}}) doesn't match what's been detected via GeoIP (${BOLD}${geoip_keyboard}${RESET}})"
+  file=/etc/default/keyboard; #[ -e "${file}" ] && cp -n $file{,.bkup}
+  sed -i 's/XKBLAYOUT=".*"/XKBLAYOUT="'${keyboardLayout}'"/' "${file}"
+else
+  echo -e " ${YELLOW}[i]${RESET} ${YELLOW}Skipping keyboard layout${RESET} (missing: '$0 ${BOLD}--keyboard <value>${RESET}')..." 1>&2
+fi
+#--- Changing time zone
+if [[ -n "${timezone}" ]]; then
+  echo -e "\n ${GREEN}[+]${RESET} Updating ${GREEN}location information${RESET} ~ time zone (${BOLD}${timezone}${RESET})"
+  echo "${timezone}" > /etc/timezone
+  ln -sf "/usr/share/zoneinfo/$(cat /etc/timezone)" /etc/localtime
+  dpkg-reconfigure -f noninteractive tzdata
+else
+  echo -e " ${YELLOW}[i]${RESET} ${YELLOW}Skipping time zone${RESET} (missing: '$0 ${BOLD}--timezone <value>${RESET}')..." 1>&2
+fi
 
