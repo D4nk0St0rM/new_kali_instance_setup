@@ -2,7 +2,7 @@
 
 ## D4nk0St0rM
 #### #### #### #### spread l0ve & kn0wledge #### #### #### ####
-# Created after some inspiration from https://github.com/blacklanternsecurity/kali-setup-script
+# Created after some inspiration from blacklanternsecurity & g0tmi1k scripts
 # Create user to not require password for sudo [sudo visudo / theUSER ALL=(ALL) NOPASSWD:ALL)
 # Use the following for password-less privesc : sudo apt-get install -y -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
 
@@ -84,17 +84,13 @@ wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr
 sudo update-locale LANG=en_GB.UTF-8
 
 ##### update 
-echo -e "\n ${GREEN}[+]${RESET} ${GREEN}Updating OS${RESET} from repositories ~ this ${BOLD}may take a while${RESET} depending on your connection & last time you updated / distro version"
+ echo -e "\n ${GREEN}[+]${RESET} ${GREEN}Updating OS${RESET} from repositories ~ this ${BOLD}may take a while${RESET} depending on your connection & last time you updated / distro version"
 for FILE in clean autoremove; do apt-get -y -qq "${FILE}"; done         # Clean up      clean remove autoremove autoclean
 export DEBIAN_FRONTEND=noninteractive
 apt-get -qq update && APT_LISTCHANGES_FRONTEND=none apt-get -o Dpkg::Options::="--force-confnew" -y dist-upgrade --fix-missing || echo -e ' '${RED}'[!] Issue with apt-get'${RESET} 1>&2
 #--- Cleaning up temp stuff
 for FILE in clean autoremove; do apt-get -y -qq "${FILE}"; done         # Clean up - clean remove autoremove autoclean
-#--- Enable bleeding edge ~ http://www.kali.org/kali-monday/bleeding-edge-kali-repositories/
-#file=/etc/apt/sources.list; [ -e "${file}" ] && cp -n $file{,.bkup}
-#grep -q 'kali-bleeding-edge' "${file}" 2>/dev/null || echo -e "\n\n## Bleeding edge\ndeb http://repo.kali.org/kali sana-bleeding-edge main" >> "${file}"
-#apt-get -qq update && apt-get -y -qq upgrade
-#--- Check kernel stuff
+###### kernel
 _TMP=$(dpkg -l | grep linux-image- | grep -vc meta)
 if [[ "${_TMP}" -gt 1 ]]; then
   echo -e "\n ${YELLOW}[i]${RESET} Detected multiple kernels installed"
@@ -104,11 +100,10 @@ if [[ "${_TMP}" -gt 1 ]]; then
 fi
 
 
-sudo apt-get -qq update 
-sudo apt-get -full-upgrade -y
+# sudo apt-get -full-upgrade -y
 
 
-##### Update location information - set either value to "" to skip.
+##### Update location information - either value "" to skip.
 echo -e "\n ${GREEN}[+]${RESET} Updating ${GREEN}location information${RESET}"
 if [[ -n "${keyboardLayout}" ]]; then
   echo -e "\n ${GREEN}[+]${RESET} Updating ${GREEN}location information${RESET} ~ keyboard layout (${BOLD}${keyboardLayout}${RESET})"
@@ -119,7 +114,7 @@ if [[ -n "${keyboardLayout}" ]]; then
 else
   echo -e " ${YELLOW}[i]${RESET} ${YELLOW}Skipping keyboard layout${RESET} (missing: '$0 ${BOLD}--keyboard <value>${RESET}')..." 1>&2
 fi
-#--- Changing time zone
+#####  Changing time zone
 if [[ -n "${timezone}" ]]; then
   echo -e "\n ${GREEN}[+]${RESET} Updating ${GREEN}location information${RESET} ~ time zone (${BOLD}${timezone}${RESET})"
   echo "${timezone}" > /etc/timezone
