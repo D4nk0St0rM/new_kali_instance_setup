@@ -157,3 +157,36 @@ grep -q "^alias l='ls $LS_OPTIONS -lA'" "${file}" 2>/dev/null || echo "alias l='
 #--- Apply new configs
 if [[ "${SHELL}" == "/bin/zsh" ]]; then source ~/.zshrc else source "${file}"; fi
 
+
+################# TO CONTINUE TESTING .......... 
+
+##### Install GNOME Terminator
+echo -e "\n ${GREEN}[+]${RESET} Installing GNOME ${GREEN}Terminator${RESET} ~ multiple terminals in a single window"
+apt-get -y -qq install terminator || echo -e ' '${RED}'[!] Issue with apt-get'${RESET} 1>&2
+#--- Configure terminator
+mkdir -p ~/.config/terminator/
+file=~/.config/terminator/config; [ -e "${file}" ] && cp -n $file{,.bkup}
+[ -e "${file}" ] || cat <<EOF > "${file}"
+[global_config]
+  enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.9
+    scroll_on_output = False
+    copy_on_selection = True
+    background_type = transparent
+    scrollback_infinite = True
+    show_titlebar = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
+EOF
+
+
