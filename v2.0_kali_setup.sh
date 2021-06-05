@@ -9,11 +9,9 @@
 #### Enable debug mode
 #set -x
 
-#### sudo no passwd - manual
-# sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
 
-#### change region to UK - manual
-# sudo setxkbmap -layout gb
+#### sudo no passwd - manual
+sudo apt install -y kali-grant-root && sudo dpkg-reconfigure kali-grant-root
 
 #### update sources.list
 wget https://raw.githubusercontent.com/D4nk0St0rM/general_linux_notes/main/sources.list
@@ -21,6 +19,16 @@ sudo mv sources.list /etc/apt/sources.list
 
 #### Add repo keys
 wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo tee -a /usr/share/keyrings/protonvpn.asc
+
+#### region UK - manual
+sudo setxkbmap -layout gb
+### GB Locales
+sudo update-locale LANG=en_GB.UTF-8
+# sudo dpkg-reconfigure locales - requires manual intervention
+
+
+
+
 
 
 #### Update
@@ -31,7 +39,7 @@ sudo apt update && sudo apt -y full-upgrade
 sudo apt-get install -y figlet -y 2>/dev/null
 sudo apt-get install -y toilet -y 2>/dev/null
 sudo apt-get install -y tree -y 2>/dev/null
-# sudo dpkg-reconfigure locales - requires manual intervention
+
 
 #### set up some colour referencing to change outputs depending on your preferences
 RED='\e[1;31m'
