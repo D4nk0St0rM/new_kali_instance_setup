@@ -17,6 +17,10 @@ timezone=""    # Set timezone location                                     [ --t
 ##### (Optional) Enable debug mode?
 #set -x
 
+sudo apt update
+sudo apt install full-upgrade -y
+
+
 ##### Colour output
 RED="\033[01;31m"      # Issues/Errors
 GREEN="\033[01;32m"    # Success
@@ -99,9 +103,6 @@ if [[ "${_TMP}" -gt 1 ]]; then
   echo -e " ${YELLOW}[i]${RESET}   Clean up: apt-get remove --purge $(dpkg -l 'linux-image-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d')"  
   echo -e " ${RED}[i]${RESET}    DO NOT RUN IF NOT USING THE LASTEST KERNEL!"
 fi
-
-
-# sudo apt-get -full-upgrade -y
 
 
 ##### Update location information - either value "" to skip.
