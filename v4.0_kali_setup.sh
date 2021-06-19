@@ -14,11 +14,10 @@
 keyboardLayout=""         # Set keyboard layout                                       [ --keyboard gb]
 timezone=""    # Set timezone location                                     [ --timezone Europe/London ]
 
-##### (Optional) Enable debug mode?
-#set -x
 
-sudo apt update
-sudo apt install full-upgrade -y
+sudo apt-get update
+sudo apt-get install full-upgrade -y
+sudo apt-get install kali-linux-full -y
 
 
 ##### Colour output
@@ -136,8 +135,8 @@ echo -e "\n ${GREEN}[+]${RESET} Configuring ${GREEN}bash${RESET} ~ CLI shell"
 file=/etc/bash.bashrc; [ -e "${file}" ] && cp -n $file{,.bkup}   #~/.bashrc
 grep -q "cdspell" "${file}" || echo "shopt -sq cdspell" >> "${file}"             # Spell check 'cd' commands
 grep -q "checkwinsize" "${file}" || echo "shopt -sq checkwinsize" >> "${file}"   # Wrap lines correctly after resizing
-grep -q "HISTSIZE" "${file}" || echo "HISTSIZE=10000" >> "${file}"               # Bash history (memory scroll back)
-grep -q "HISTFILESIZE" "${file}" || echo "HISTFILESIZE=10000" >> "${file}"       # Bash history (file .bash_history)
+grep -q "HISTSIZE" "${file}" || echo "HISTSIZE=100000" >> "${file}"               # Bash history (memory scroll back)
+grep -q "HISTFILESIZE" "${file}" || echo "HISTFILESIZE=100000" >> "${file}"       # Bash history (file .bash_history)
 #--- Apply new configs
 if [[ "${SHELL}" == "/bin/zsh" ]]; then source ~/.zshrc else source "${file}"; fi
 
